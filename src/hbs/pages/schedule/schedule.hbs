@@ -1,0 +1,30 @@
+{{#> layout }}
+  
+  {{#data 'navbar'}}
+  {{> navbar/navbar
+      navigation=navbar.navigation
+      associate="true"
+      page="Schedule" 
+  }}
+  {{/data}}
+  <div class="container-xl">
+    <h1 class="h1">Schedule</h1>
+    <div class="page_header">
+      <div class="btn-group" role="group" aria-label="Navigate between weekly schedules">
+        <button type="button" class="btn btn-light" aria-label="Previous"><i class="material-icons">chevron_left</i></button>
+        <button type="button" class="btn btn-light" aria-label="Next"><i class="material-icons">chevron_right</i></button>
+      </div>
+      <ul class="nav nav-pills" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Team View</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Activity View</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Effective Scheduling</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+{{/ layout }}

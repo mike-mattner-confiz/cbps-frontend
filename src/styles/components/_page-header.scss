@@ -1,0 +1,20 @@
+.page_header {
+    display: flex;
+
+    .nav-pills .nav-link.active,
+    .nav-pills .show>.nav-link {
+        color:#fff;
+        background-color: $primary;
+    }
+    .nav-pills {
+      margin-left: 2rem;
+    }
+    .nav-pills .nav-link {
+      color: $primary;
+      transition: all 0.25s ease-in-out;
+      &:hover {
+        color:#fff;
+        background-color: $primary;
+      }
+    }
+}

@@ -5,12 +5,12 @@
         {
           "text": "Dashboard",
           "icon": "home",
-          "url": "#"
+          "url": "/dashboard/dashboard.html"
         },
         {
           "text": "Schedule",
           "icon": "calendar_today",
-          "url": "#"
+          "url": "/schedule/schedule.html"
         }
       ]
     }

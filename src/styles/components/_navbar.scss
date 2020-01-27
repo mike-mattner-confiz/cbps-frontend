@@ -12,7 +12,23 @@
   }
   &-dark {
     .navbar-nav .nav-link {
+      // color: $white;
+      color: rgba(255,255,255,0.75);
+      transition: all 0.25s ease-in-out;
+      &.active {
+        font-weight: 700;
+      }
+
+      &:hover {
+        color: $white;
+        background-color: rgba(0,0,0,0.15);
+      }
+    }
+    .navbar-toggler {
       color: $white;
+      &-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1.0)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
     }
   }
   &-nav {
