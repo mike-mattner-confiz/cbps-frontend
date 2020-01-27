@@ -1,0 +1,49 @@
+@import 'utils/variables';
+@import 'utils/mixins';
+@import 'utils/helpers';
+@import 'utils/animations';
+@import 'colors';
+
+* {
+  box-sizing: border-box;
+}
+
+// body {
+//   margin: 0;
+// }
+// html,
+// body {
+//   &.no-scroll {
+//     overflow: hidden;
+//     @media(max-width: 980px) {
+//       overflow-y: visible;
+//     }
+//   }
+// }
+
+// img {
+//   max-width: 100%;
+//   display: block;
+// }
+
+// sup{
+//   font-size: 60%;
+// }
+
+// .button {
+//   transition: background-color 0.3s ease;
+//   position: relative;
+// }
+
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6 {
+//     line-height: 1;
+// }
+
+// p {
+//     margin: 1rem 0;
+// }

@@ -1,0 +1,15 @@
+// Responsive Breakpoints
+// ------------------------------
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;
+
+// Layout
+// ------------------------------
+$max-content-width: 74.375rem; // 1190px
+$template-padding: 0.625rem; // 10px

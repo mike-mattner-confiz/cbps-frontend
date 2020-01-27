@@ -1,0 +1,95 @@
+// Colors
+// ---------------------
+.is-white {
+  color: white;
+}
+
+// Text Align
+// -----------------
+.tc {
+  text-align: center;
+}
+
+// Heights
+// ---------------------
+.h-auto {
+  height: auto;
+}
+.h-100vh {
+  height: 100vh;
+}
+.h-90vh {
+  height: 90vh;
+}
+.h-70vh {
+  height: 70vh;
+}
+.h-50vh {
+  height: 50vh;
+}
+@include max-width(lg) {
+  .h-auto-md {
+    height: auto;
+  }
+  .h-60vh-md {
+    height: 60vh;
+  }
+}
+@include max-width(md) {
+  .h-auto-sm {
+    height: auto;
+  }
+
+  .h-90vmax-sm {
+    height: 90vmax !important;
+  }
+  .h-75vmax-sm {
+    height: 75vmax;
+    min-height: 75vmax !important;
+  }
+}
+
+// Widths
+// ---------------------
+@include min-width(md) {
+  .mw-70-md {
+      max-width: calc( #{$max-content-width} * 0.7 );
+    }
+  .mw-60-md {
+      max-width: calc( #{$max-content-width} * 0.6 );
+  }
+  .mw-33-md {
+      max-width: calc( ( #{$max-content-width} / 3 ) - ( #{$template-padding} * 2 ) );
+  }
+}
+
+// Responsive
+// ---------------------
+.hide {
+  display: none !important;
+  visibility: hidden !important;
+}
+@include max-width(414px) {
+  .hide-xs {
+      display: none !important;
+      visibility: hidden !important;
+  }  
+}
+@include max-width(md) {
+  .hide-mobile {
+      display: none !important;
+      visibility: hidden !important;
+  }  
+}
+@include between-width(md, lg) {
+  .hide-tablet {
+      display: none !important;
+      visibility: hidden !important;
+  }  
+}
+@include min-width(lg) {
+  .hide-desktop {
+      display: none !important;
+      visibility: hidden !important;
+  }  
+}

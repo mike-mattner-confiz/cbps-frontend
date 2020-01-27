@@ -1,0 +1,449 @@
+//
+// Generates common combinations of flexbox properties.
+// @param {string} $direction
+// @param {string} $justify
+// @param {string} $align
+// @param {string} $wrap
+//
+@mixin flex($direction: '', $justify: '', $align: '', $wrap: '') {
+  display: flex;
+  flex-direction: unquote($direction);
+  flex-wrap: unquote($wrap);
+  justify-content: unquote($justify);
+  align-items: unquote($align);
+}
+
+//
+// Positions flex children on top of each other.
+//
+@mixin overlapping-flex {
+  flex-shrink: 0;
+  margin-right: -100%;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+//
+// Absolutely positions an element, like margin/padding shorthand.
+// @param {...string} $value
+//
+@mixin absolute-position($value...) {
+  position: absolute;
+  $top: nth($value, 1);
+  $bottom: nth($value, 1);
+  $left: nth($value, 1);
+  $right: nth($value, 1);
+
+  @if length($value) == 2 or length($value) == 3 {
+    $left: nth($value, 2);
+  }
+
+  @if length($value) >= 2 {
+    $right: nth($value, 2);
+  }
+
+  @if length($value) >= 3 {
+    $bottom: nth($value, 3);
+  }
+
+  @if length($value) == 4 {
+    $left: nth($value, 4);
+  }
+
+  top: $top;
+  bottom: $bottom;
+  left: $left;
+  right: $right;
+}
+
+//
+// Centers an element both vertically and horizontally.
+//
+@mixin absolute-center {
+  @include absolute-position(0);
+  margin: auto;
+}
+
+//
+// This mixin can be used to set the object-fit:
+// @include object-fit(contain);
+// or object-fit and object-position:
+// @include object-fit(cover, top);
+//
+// @param {string=} $fit
+// @param {string=} $position
+//
+@mixin object-fit($fit: fill, $position: null) {
+  -o-object-fit: $fit;
+  object-fit: $fit;
+
+  @if $position {
+    -o-object-position: $position;
+    object-position: $position;
+    font-family: 'object-fit: #{$fit}; object-position: #{$position}';
+  }
+
+  @else {
+    font-family: 'object-fit: #{$fit}';
+  }
+}
+
+//
+// Positions an image to fill the background
+//
+@mixin cover-background($fit: cover, $position: null) {
+	@include absolute-center;
+	@include object-fit($fit, $position);
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+}
+
+@mixin hiddenAnimatable {
+    opacity: 0;
+    visibility: hidden;
+}
+
+//
+// Removes default styling from ul and ol elements.
+//
+@mixin list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+//
+// Removes default styling from button elements.
+//
+@mixin button-reset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+//
+// Sets default transition properties for general elements based on Material Design recommendations.
+// {@link https://material.io/design/motion/speed.html}
+// @param {string=} $property
+// @param {string=} $duration
+// @param {string=} $delay
+// @param {string=} $timing
+//
+@mixin transition($property: all, $duration: 195ms, $delay: 0s, $timing: cubic-bezier(.4, 0, .2, 1)) {
+  transition: {
+    property: unquote($property);
+    duration: $duration;
+    timing-function: unquote($timing);
+    delay: $delay;
+  }
+}
+
+//
+// Sets default transition properties for entering elements based on Material Design recommendations.
+// {@link https://material.io/design/motion/speed.html}
+// @param {string=} $property
+// @param {string=} $duration
+// @param {string=} $delay
+// @param {string=} $timing
+//
+@mixin transition-enter($property: all, $duration: 195ms, $delay: 0s, $timing: cubic-bezier(0, 0, .2, 1)) {
+  transition: {
+    property: unquote($property);
+    duration: $duration;
+    timing-function: unquote($timing);
+    delay: $delay;
+  }
+}
+
+//
+// Sets default transition properties for leaving elements based on Material Design recommendations.
+// {@link https://material.io/design/motion/speed.html}
+// @param {string=} $property
+// @param {string=} $duration
+// @param {string=} $delay
+// @param {string=} $timing
+//
+@mixin transition-leave($property: all, $duration: 195ms, $delay: 0s, $timing: cubic-bezier(.4, 0, 1, 1)) {
+  transition: {
+    property: unquote($property);
+    duration: $duration;
+    timing-function: unquote($timing);
+    delay: $delay;
+  }
+}
+
+@mixin template-grid {
+  max-width: $max-content-width;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $template-padding;
+  padding-right: $template-padding;
+	float: none !important;
+  clear: both !important;
+  position: relative;
+}
+
+//
+// Responsive top and bottom padding 
+// between sections on ka.com
+//
+
+@mixin section-margin($sm: $section-v-margin-sm, $lg: $section-v-margin-lg) {
+  margin-top: $sm;
+  margin-bottom: $sm;
+  @include min-width(md) {
+    margin-top: $lg;
+    margin-bottom: $lg;
+  }
+}
+
+@mixin section-padding($sm: $section-v-padding-sm, $lg: $section-v-padding-lg) {
+  padding-top: $sm;
+  padding-bottom: $sm;
+  @include min-width(md) {
+    padding-top: $lg;
+    padding-bottom: $lg;
+  }
+}
+
+@mixin story-padding {
+  padding: 8vmin $template-padding*2; // mobile
+  @include min-width($max-content-width + $template-padding*2.5) {
+    padding: 8vmin 0; // desktop
+  }
+}
+
+//
+// Layout padding between section items 
+//
+@mixin layout-padding($placement, $padding: $template-padding) {
+	@if $placement == top {
+		padding-top: $padding;
+	} @else if $placement == bottom {
+		padding-bottom: $padding;
+	} @else if $placement == left {
+		padding-left: $padding;
+	} @else {
+		padding-right: $padding;
+	}
+}
+
+//
+// Uses generated content to create an element for styling.
+// @param {string=} $placement
+// @param {string=} $display
+//
+@mixin generated-block($placement: after, $display: inline-block) {
+  &::#{$placement} {
+    @content;
+    content: '';
+    display: $display;
+  }
+}
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+//
+// Generates a min-width media query for the specified breakpoint.
+// @param {string} $breakpoint
+//
+@mixin min-width($breakpoint) {
+  @media (min-width: if(map-get($grid-breakpoints, $breakpoint), map-get($grid-breakpoints, $breakpoint), $breakpoint)) {
+    @content;
+  }
+}
+
+//
+// Generates a media query spanning the width range between the low point and one less than the high point.
+// @param {string} $lowpoint
+// @param {string} $highpoint
+//
+@mixin between-width($lowpoint, $highpoint) {
+  @media (min-width: if(map-get($grid-breakpoints, $lowpoint), map-get($grid-breakpoints, $lowpoint), $lowpoint)) and (max-width: if(map-get($grid-breakpoints, $highpoint), map-get($grid-breakpoints, $highpoint) - 1, $highpoint)) {
+    @content;
+  }
+}
+
+//
+// Generates a max-width media query for one less than the specified breakpoint.
+// @param {string} $breakpoint
+//
+@mixin max-width($breakpoint) {
+  @media (max-width: if(map-get($grid-breakpoints, $breakpoint), map-get($grid-breakpoints, $breakpoint) - 1, $breakpoint)) {
+    @content;
+  }
+}
+
+//
+// Generates a min-height media query for the specified breakpoint.
+// @param {string} $breakpoint
+//
+@mixin min-height($breakpoint) {
+  @media (min-height: if(map-get($grid-breakpoints, $breakpoint), map-get($grid-breakpoints, $breakpoint), $breakpoint)) {
+    @content;
+  }
+}
+
+//
+// Generates a media query spanning the width height between the low point and one less than the high point.
+// @param {string} $lowpoint
+// @param {string} $highpoint
+//
+@mixin between-height($lowpoint, $highpoint) {
+  @media (min-height: if(map-get($grid-breakpoints, $lowpoint), map-get($grid-breakpoints, $lowpoint), $lowpoint)) and (max-height: if(map-get($grid-breakpoints, $highpoint), map-get($grid-breakpoints, $highpoint) - 1, $highpoint)) {
+    @content;
+  }
+}
+
+//
+// Generates a max-height media query for one less than the specified breakpoint.
+// @param {string} $breakpoint
+//
+@mixin max-height($breakpoint) {
+  @media (max-height: if(map-get($grid-breakpoints, $breakpoint), map-get($grid-breakpoints, $breakpoint) - 1, $breakpoint)) {
+    @content;
+  }
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+////
+/// BEM Mixins
+////
+
+$bem-element-separator: '__' !default;
+$bem-modifier-separator: '--' !default;
+$bem-pseudo-separator: ':' !default;
+
+@function _selector-to-string($selector) {
+  $selector: inspect($selector);
+  $dot-index: str-index($selector, '.');
+  $selector: str-slice($selector, $dot-index, -1);
+
+  @return $selector;
+}
+
+@function _selector-has-modifier($selector) {
+  $selector: _selector-to-string($selector);
+
+  @if str-index($selector, $bem-modifier-separator) or str-index($selector, ':') {
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
+@function _get-block-name($selector) {
+  $selector: _selector-to-string($selector);
+  $modifier-separator: $bem-pseudo-separator;
+  $combined-selector-position: 0;
+
+  @if str-index($selector, ' ') {
+    $combined-selector-position: str-index($selector, ' ') + 1;
+  }
+
+  @if str-index($selector, $bem-modifier-separator) {
+    $modifier-separator: $bem-modifier-separator;
+  }
+
+  $modifier-start: str-index($selector, $modifier-separator) - 1;
+
+  @if $combined-selector-position < $modifier-start {
+    @return selector-parse(str-slice($selector, $combined-selector-position, $modifier-start));
+  } @else {
+    @return selector-parse(str-slice($selector, 0, $modifier-start));
+  }
+}
+
+// BEM Block
+// @param {String} $block - Block's name
+@mixin bem-block($block) {
+  .#{$block} {
+    @content;
+  }
+}
+
+// @alias bem-block
+@mixin b($block) {
+  @include bem-block($block) {
+    @content;
+  };
+}
+
+// Block Element
+// @param {List} $elements - Element's name
+@mixin bem-element($elements) {
+  $selector: &;
+
+  @if _selector-has-modifier($selector) {
+    $block: _get-block-name($selector);
+
+    @at-root {
+      @each $element in $elements {
+        #{selector-parse(selector-nest(&, selector-append($block, $bem-element-separator, $element)))} {
+          @content;
+        }
+      }
+    }
+  } @else {
+    @at-root {
+      @each $element in $elements {
+        #{selector-append(&, $bem-element-separator, $element)} {
+          @content;
+        }
+      }
+    }
+  }
+}
+
+// @alias bem-element
+@mixin e($elements) {
+  @include bem-element($elements) {
+    @content;
+  };
+}
+
+// Block Modifier
+// @param {String} $modifier - Modifier's name
+@mixin bem-modifier($modifier) {
+  $class-name: selector-append(&, $bem-modifier-separator, $modifier);
+
+  @if str-index($modifier, $bem-pseudo-separator) == 1 {
+    $class-name: selector-append(&, $modifier);
+  }
+
+  @at-root #{$class-name} {
+    @content;
+  }
+}
+
+// @alias bem-modifier
+@mixin m($modifier) {
+  @include bem-modifier($modifier) {
+    @content;
+  };
+}
