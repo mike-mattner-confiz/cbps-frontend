@@ -17,6 +17,7 @@
     "babel-loader": "^8.0.5",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "bootstrap": "^4.4.1",
     "clean-webpack-plugin": "^2.0.1",
     "copy-webpack-plugin": "^5.0.1",
     "countup.js": "^2.0.4",

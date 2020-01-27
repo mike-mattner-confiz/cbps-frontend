@@ -1,1 +1,1 @@
-import './home.scss';
+import './dashboard.scss';

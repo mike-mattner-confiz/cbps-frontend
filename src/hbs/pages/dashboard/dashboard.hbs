@@ -1,5 +1,10 @@
 {{#> layout }}
-
+  
+  {{#data 'navbar'}}
+  {{> navbar/navbar
+      navigation=navbar.navigation
+      associate="true" }}
+  {{/data}}
 	
     
 {{/ layout }}

@@ -1,6 +1,5 @@
 @import '../../styles/base';
-@import '../../styles/brands/maytag';
-.nav {
+.pagenav {
     ul {
         list-style: none;
         padding: 0;
@@ -28,8 +27,8 @@ body {
     padding: 2rem;
 }
 h1 {
-    color: $dark-blue;
+    color: $black;
 }
 hr {
-    border-top: 1px solid $gray-light-2;
+    border-top: 1px solid #ededed;
 }

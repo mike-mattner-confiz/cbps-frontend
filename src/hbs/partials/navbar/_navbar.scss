@@ -1,0 +1,28 @@
+.navbar {
+  &-brand {
+    svg {
+      fill: $white;
+      height: 30px;
+    }
+  }
+  &-dark {
+    .navbar-nav .nav-link {
+      color: $white;
+    }
+  }
+  .nav-link {
+    display: flex;
+  }
+  .nav-item {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 14px;
+    line-height: 24px;
+    margin-left: 2rem;
+    .material-icons {
+      font-size: 24px;
+      line-height: 24px;
+      margin-right: 10px;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "navbar": {
+    "navigation": {
+      "associate": [
+        {
+          "text": "Dashboard",
+          "icon": "home",
+          "url": "#"
+        },
+        {
+          "text": "Schedule",
+          "icon": "calendar_today",
+          "url": "#"
+        }
+      ]
+    }
+  }
+}
