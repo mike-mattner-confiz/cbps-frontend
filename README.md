@@ -1,12 +1,12 @@
-##Walgreen's UX Handlebars Starter Project
+# Walgreen's UX Handlebars Starter Project
 
 A simple starter project built on webpack, handlebars, sass and babel. Useful for creating static sites with reusable, modular components.
 
-###Installation
+### Installation
 
     yarn install
     
-###Usage
+### Usage
 
 Run the following to start up the development server and watch for changes.
 
