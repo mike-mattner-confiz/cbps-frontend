@@ -22,16 +22,18 @@ The generated `dist` folder is created with the following structure:
 
     dist
       about
-        index.html
-      css
-        about.css
-        index.css
-      img
-      	logo.png
-      js
-        about.js
-        index.js
-      favicon.ico
+        about.html
+        css
+          about.css
+        js
+          about.js
+        img
+          logo.png
+      index
+        css
+          about.css
+        js
+          about.js
       index.html
 
 The generated `html` files will have links to their respective `[name].css` and `[name].js` files.
